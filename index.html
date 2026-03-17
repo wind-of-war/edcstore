@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>edcstore - Quản lý sản phẩm</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div>
+        <p class="eyebrow">edcstore</p>
+        <h1>Trang quản lý sản phẩm đẹp, nhanh, dễ dùng</h1>
+        <p>
+          Thêm sản phẩm trong vài giây, xem trước thẻ sản phẩm ngay lập tức và dùng AI để gợi ý mô tả bán hàng.
+        </p>
+      </div>
+      <div class="hero-stats">
+        <article>
+          <p id="totalProducts">0</p>
+          <span>Sản phẩm đã lưu</span>
+        </article>
+        <article>
+          <p id="avgPrice">0₫</p>
+          <span>Giá trung bình</span>
+        </article>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel">
+        <h2>Thêm sản phẩm</h2>
+        <form id="productForm" class="form-grid">
+          <label>
+            Tên sản phẩm
+            <input required id="name" placeholder="Ví dụ: Áo hoodie basic" />
+          </label>
+          <label>
+            Giá (VNĐ)
+            <input required id="price" type="number" min="0" step="1000" placeholder="590000" />
+          </label>
+          <label>
+            Danh mục
+            <input id="category" placeholder="Thời trang" />
+          </label>
+          <label>
+            Ảnh sản phẩm (URL)
+            <input id="image" type="url" placeholder="https://..." />
+          </label>
+          <label class="full-width">
+            Mô tả
+            <textarea id="description" rows="4" placeholder="Mô tả ngắn về sản phẩm..."></textarea>
+          </label>
+          <div class="full-width form-actions">
+            <button type="button" id="aiSuggestBtn" class="secondary">AI gợi ý mô tả</button>
+            <button type="submit">Lưu sản phẩm</button>
+          </div>
+        </form>
+        <div id="aiBox" class="ai-box hidden">
+          <h3>Gợi ý AI</h3>
+          <p id="aiResult"></p>
+          <div class="form-actions">
+            <button type="button" id="useSuggestion" class="secondary">Dùng mô tả này</button>
+            <button type="button" id="closeSuggestion">Đóng</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="products-header">
+          <h2>Danh sách sản phẩm</h2>
+          <button id="clearBtn" class="danger">Xóa tất cả</button>
+        </div>
+        <div id="emptyState" class="empty">Chưa có sản phẩm nào. Hãy thêm sản phẩm đầu tiên!</div>
+        <div id="products" class="products"></div>
+      </section>
+    </main>
+
+    <template id="productCardTemplate">
+      <article class="card">
+        <img alt="" />
+        <div class="card-content">
+          <div class="title-row">
+            <h3></h3>
+            <span class="price"></span>
+          </div>
+          <p class="meta"></p>
+          <p class="desc"></p>
+          <button class="delete-btn">Xóa</button>
+        </div>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
